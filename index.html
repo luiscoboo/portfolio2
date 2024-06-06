@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MI GITPAGE</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f0f0f0;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto;
+            display: block;
+        }
+        h1 {
+            text-align: center;
+            margin: 10px 0;
+        }
+        .skills {
+            margin-top: 20px;
+        }
+        .skill-bar {
+            margin: 10px 0;
+        }
+        .skill-bar div {
+            height: 30px;
+            line-height: 30px;
+            background: #333;
+            color: #fff;
+            text-align: center;
+            animation: grow 2s ease-in-out;
+        }
+        @keyframes grow {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+        .contact {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .contact a {
+            color: #333;
+            text-decoration: none;
+            padding: 10px;
+            transition: background 0.3s, color 0.3s;
+        }
+        .contact a:hover {
+            background: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Mi Git page</h1>
+    </header>
+    <div class="container">
+        <img src="Imagen de WhatsApp 2024-06-03 a las 09.33.03_aa71082e.jpg" alt="Foto personal" class="profile-pic">
+        <h1>Luis Jose Cobo Galvan</h1>
+        <p>Estudiante de desarrollo web de aplicaciones multiplataformas, 
+            con conocimientos en HTML, CSS, JavaScript, Java y sobre todo aficionado al mundo del sonido y produccio musical.
+            A lo largo de mis estudios, he desarrollado habilidades, lo cual me ha permitido fortalecer mis competencias y crecer como profesional.
+<br><br>
+            Se me dan basyante bien la creacion de paginas web y el diseño con CSS, y algo de manejo con base de datos.
+
+        Me considero una persona proactiva, con gran capacidad de aprendizaje y adaptabilidad. Estoy convencido/a de que mi entusiasmo y disposición para aprender 
+        contribuirán positivamente a su equipo. Estoy ansioso/a por demostrar mi compromiso y dedicación, así como por aprender de la experiencia y conocimiento 
+        de sus colaboradores.
+<br><br>
+        </p>
+        <div class="skills">
+            <h2>Habilidades</h2>
+            <div class="skill-bar html-skill">
+                <div style="width: 90%;">HTML</div>
+            </div>
+            <div class="skill-bar css-skill">
+                <div style="width: 80%;">CSS</div>
+            </div>
+            <div class="skill-bar js-skill">
+                <div style="width: 70%;">JavaScript</div>
+            </div>
+            <div class="skill-bar react-skill">
+                <div style="width: 60%;">React</div>
+            </div>
+            <div class="skill-bar node-skill">
+                <div style="width: 50%;">JAVA</div>
+            </div>
+        </div>
+        <div class="social-skills">
+            <h2>Habilidades Sociales</h2>
+            <div class="chart-container">
+                <canvas id="socialSkillsChart"></canvas>
+            </div>
+        </div>
+        <div class="contact">
+            <h2>Contacto</h2>
+            <a href="#">Correo Electrónico</a>
+            <a href="https://www.instagram.com/luiscoboo/" target="_blank">Instagram</a>
+            <a href="https://github.com/luiscoboo?tab=repositories" target="_blank">GitHub</a>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        
+        document.querySelectorAll('.skill-bar div').forEach(function(bar) {
+            let width = bar.style.width;
+            bar.style.width = '0';
+            setTimeout(function() {
+                bar.style.width = width;
+            }, 100);
+        });
+
+       
+        const ctx = document.getElementById('socialSkillsChart').getContext('2d');
+        const socialSkillsChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Comunicación', 'Trabajo en equipo', 'Liderazgo', 'Creatividad', 'Resolución de problemas'],
+                datasets: [{
+                    label: 'Habilidades Sociales',
+                    data: [20, 25, 15, 20, 20],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.6)',
+                        'rgba(54, 162, 235, 0.6)',
+                        'rgba(255, 206, 86, 0.6)',
+                        'rgba(75, 192, 192, 0.6)',
+                        'rgba(153, 102, 255, 0.6)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed !== null) {
+                                    label += context.parsed + '%';
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
